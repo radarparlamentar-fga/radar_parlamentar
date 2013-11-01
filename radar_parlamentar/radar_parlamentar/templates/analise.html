@@ -35,7 +35,7 @@
         Aqui é apresentada a animação das análises realizadas com as votações da {{casa_legislativa.nome}}.<br/>
         <h4 style="margin-bottom:5px;">Como Funciona?</h4>
         <aside id="como-funciona" style="margin: 0 90px 10px 20px; padding: 10px; background-color: rgba(220,220,220,0.7); -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;">
-            A análise, realizada em períodos de dois anos, inicia-se no primeiro período disponibilizado pela casa legislativa e é animada para os períodos seguintes.<br/>
+            A análise, realizada em períodos de dois anos, inicia-se no primeiro período disponibilizado pela casa legislativa e é animada parsubmit form javascripta os períodos seguintes.<br/>
             No lado superior direito da visualização é possível observar o período de análise que está sendo mostrado, e o logo abaixo o número de votações nominais utilizadas para a análise do mesmo.<br/>
             Para visualizar um determinado período passe o mouse sobre o período, na horizontal.<br/>
             À direita do gráfico, você encontra a legenda com o número dos partidos e a sigla da legenda.<br/>
@@ -50,6 +50,15 @@
             <button id="animar">Animar</button>
             <br/><br/>
         </div-->
+        <form>
+        <h3>Periodicidade: <select name="escolha_periodicidade" onChange="trocou_periodicidade()">
+            <option>Quadriênio</option>
+            <option>Biênio</option>
+            <option>Ano</option>
+            <option>Semestre</option>
+            <option>Mês</option>
+        </select> <br><br></h3>
+        </form>
         <aside id="legenda" class="list">
             <b>LEGENDA</b>
             <ul class="legenda">
@@ -86,4 +95,7 @@
     Plot.initialize('{{casa_legislativa.nome_curto}}')
   });
 {% endblock extrascriptsend %}
+
+{% django_js %}
+
 
