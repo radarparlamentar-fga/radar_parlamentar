@@ -19,8 +19,8 @@
 Plot = (function ($) {
 
     // Function to load the data and draw the chart
-    function initialize(nome_curto_casa_legislativa) {
-        d3.json("/analises/analise/" + nome_curto_casa_legislativa + "/json_pca", _plot_data);
+    function initialize(nome_curto_casa_legislativa, periodicidade) {
+    d3.json("/analises/analise/" + nome_curto_casa_legislativa + "/" + periodicidade + "/json_pca", _plot_data);
         //para testes com arquivo hardcoded
         //d3.json("/static/files/partidos.json", _plot_data);
     }

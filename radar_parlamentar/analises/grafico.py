@@ -56,11 +56,11 @@ class JsonAnaliseGenerator:
     """
 
     @staticmethod
-    def _get_analises(casa_legislativa):
+    def _get_analises(casa_legislativa, periodicidade):
         """
         importa os dados da analise
         """
-        analisador_temporal = analise.AnalisadorTemporal(casa_legislativa)
+        analisador_temporal = analise.AnalisadorTemporal(casa_legislativa, periodicidade)
         analisador_temporal.get_analises()
         return analisador_temporal
 
@@ -121,14 +121,14 @@ class JsonAnaliseGenerator:
             json_periodos[str(periodo)] = {"nome":unicode(analisador.periodo),"quantidade_votacoes":analisador.num_votacoes}
         return json_periodos
 
-    def get_json(self, casa_legislativa):
+    def get_json(self, casa_legislativa, periodicidade):
         """Retorna JSON para ser usado no gráfico"""
         encoder.FLOAT_REPR = lambda o:format(o,'.2f')
-        return json.dumps(self.get_json_dic(casa_legislativa),separators=(",",":"))
+        return json.dumps(self.get_json_dic(casa_legislativa, periodicidade),separators=(",",":"))
 
-    def get_json_dic(self,casa_legislativa):
+    def get_json_dic(self,casa_legislativa, periodicidade):
         """Retorna o dicionario usado para gerar o JSON"""
-        analise = JsonAnaliseGenerator._get_analises(casa_legislativa)
+        analise = JsonAnaliseGenerator._get_analises(casa_legislativa, periodicidade)
         analises = analise.analises_periodo
         analises_len = len(analises)
         json_periodos = self._json_periodos(analises,analises_len)
