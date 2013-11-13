@@ -58,9 +58,6 @@ def json_pca(request, nome_curto_casa_legislativa, periodicidade):
     """Retorna o JSON com as coordenadas do gráfico PCA"""
     casa_legislativa = get_object_or_404(models.CasaLegislativa,nome_curto=nome_curto_casa_legislativa)
     gen = JsonAnaliseGenerator()
-    try: 
-        periodicidade_selected = request.GET['periodicidade']
-    except ()
     json = gen.get_json(casa_legislativa, periodicidade)
     return HttpResponse(json, mimetype='application/json')
 

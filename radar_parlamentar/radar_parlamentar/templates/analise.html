@@ -90,9 +90,6 @@
 {% endblock extrajsend %}
 
 {% block extrascriptsend %}
-    {% if request.POST.get['periodicidade'] == 'xd' %}
-        alert('Aline feiosa');
-    {% endif %}
     var x = document.getElementById("periodicidade").value;
     alert(x);
     menuActive("analises");      
